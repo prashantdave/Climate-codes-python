@@ -30,7 +30,6 @@ def matrix_generator(file_path):
              temp = data_with_same_dimension[i]
              stacked_data = hstack([stacked_data,temp[0][dim2][dim3:dim3+gp_to_be_picked]])
          dim3 = dim3 + gp_to_be_picked
-
  datafile = open("data.txt",'a')
  writer = csv.writer(datafile)
  writer.writerow(stacked_data)
