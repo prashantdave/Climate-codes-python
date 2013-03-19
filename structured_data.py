@@ -8,8 +8,10 @@ def struct_data(file_path):
   all_data = netcdf.netcdf_file(file_path)
   all_dimension = all_data.dimensions
   list_of_variables = all_data.variables.keys()
-  lat = all_data.dimensions['lat']
-  lon = all_data.dimensions['lon']
+ # lat = all_data.dimensions['lat']
+  #lon = all_data.dimensions['lon']
+  lat = len(range(25,45))
+  lon = len(range(34,55))
   mlev = all_data.dimensions['mlev']
   time = all_data.dimensions['time']
   count = 1 
@@ -38,9 +40,10 @@ def struct_data(file_path):
       var_dim = len(all_data.variables[variable].dimensions)
       for i in range(31):
         if(var_dim == 3):
-          b = a[i,:,:].reshape(1, lat*lon).ravel()
+          b = a[i,25:45,34:55].reshape(1, lat*lon).ravel()
         if (var_dim == 4):
-          b = median(a[i,:,:,:],axis=0).reshape(1, lat*lon).ravel()
+#          b = a[i,:,:].reshape(1, lat*lon).ravel()
+          b = median(a[i,:,25:46,34:55],axis=0).reshape(1, lat*lon).ravel()
         print variable, b.shape, count 
         count = count + 1
         writer.writerow(b.tolist())
