@@ -1,14 +1,25 @@
 from mpl_toolkits.basemap import Basemap, cm
 import matplotlib.pyplot as plt
 import numpy as np
+from numpy import array
 from scipy.io import netcdf
+from Scientific.IO.NetCDF import NetCDFFile
 # set up orthographic map projection with
 # perspective of satellite looking down at 50N, 100W.
 # use low resolution coastlines.
 
-nc = netcdf.netcdf_file('nc_data/T63_WNUD_10Year_200103.01_aerom.nc')
-prcpvar = nc.variables['geosp']
-data = prcpvar[1,3:27,18:52]
+#nc = netcdf.netcdf_file('nc_data/T63_WNUD_10Year_200103.01_aerom.nc')
+#nc = netcdf.netcdf_file('nc_data/ECHAM-HAM/T63_WNUD_9year_200103/T63_WNUD_10Year_200103.01_radm.nc')
+#nc = netcdf.netcdf_file('nc_data/ECHAM-HAM/T63_WNUD_9year_200103/T63_WNUD_10Year_200103.01_radm.nc')
+
+nc = NetCDFFile('/home/prashant/Desktop/nc_data/ECHAM-HAM/2001/radm/T63_WNUD_10year_2001_0609.01_radm.nc')
+prcpvar = nc.variables['TAU_2D']
+#data = prcpvar[1,25:45,34:55]
+tau_2d = prcpvar.getValue();
+data = tau_2d[0,26:46,34:55];
+datatolist= data.tolist();
+datatolist.reverse();
+data = np.array(datatolist);
 latcorners = nc.variables['lat'][:]
 loncorners = nc.variables['lon'][:]
 
@@ -41,7 +52,7 @@ wave = data
 # compute native map projection coordinates of lat/lon grid.
 #x, y = map(lons*180./np.pi, lats*180./np.pi)
 # contour data over the map.
-cs = map.contour(x,y,wave,15,linewidths=1.5, cmap=cm.s3pcpn)
+cs = map.contour(x,y,wave,2,linewidths=1.5, cmap=cm.s3pcpn)
 cbar = map.colorbar(cs,location='bottom',pad="5%")
 cbar.set_label('mm')
 

@@ -7,12 +7,13 @@ import matplotlib.pyplot as plt
 # plot rainfall from NWS using special precipitation
 # colormap used by the NWS, and included in basemap.
 
-nc = netcdf.netcdf_file('nc_data/T63_WNUD_10Year_200103.01_aerom.nc')
+#nc = netcdf.netcdf_file('nc_data/T63_WNUD_10Year_200103.01_aerom.nc')
+nc = netcdf.netcdf_file('/home/prashant/Desktop/nc_data/ECHAM-HAM/2001/radm/T63_WNUD_10year_2001_0305.01_radm.nc')
 # data from http://water.weather.gov/precip/
 prcpvar = nc.variables['geosp']
 data = prcpvar[1,:]
-latcorners = nc.variables['lat'][5:40]
-loncorners = -nc.variables['lon'][65:100]
+latcorners = nc.variables['lat'][25:45]
+loncorners = -nc.variables['lon'][34:55]
 lon_0 = 80
 lat_0 = 20
 # create figure and axes instances
