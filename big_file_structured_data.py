@@ -16,9 +16,10 @@ def struct_data(file_path):
   lat = len(range(26,49))
   lon = len(range(26,55))
   mlev = all_data.dimensions['mlev']
-#  ilev = all_data.dimensions['ilev'] #for forcing files as it does not contain mlev
+  #ilev = all_data.dimensions['ilev'] #for forcing files as it does not contain mlev
 #  time = all_data.dimensions['time']
-  time = 122
+  #time = 122 # for JJAS
+  time = 92 #for MAM 
   count = 1 
  
 #  for variable in list_of_variables:

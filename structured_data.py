@@ -12,8 +12,8 @@ def struct_data(file_path):
  # lon[34] = 63.75,  lon[55] = 103.125
  # lat = all_data.dimensions['lat']
   #lon = all_data.dimensions['lon']
-  lat = len(range(25,45))
-  lon = len(range(34,55))
+  lat = len(range(26,49))
+  lon = len(range(26,55))
 #  mlev = all_data.dimensions['mlev'] #Not required for forcing and xtsurf
   time = all_data.dimensions['time']
   count = 1 
