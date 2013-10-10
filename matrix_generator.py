@@ -13,8 +13,8 @@ def matrix_generator(file_path):
  no_of_grid_points = array(data_dimension).prod() 
  
  for variable in list_of_variables:
-     if (data_dimension == all_data.variables[variable].shape):
-         data_with_same_dimension.update({i:all_data.variables[variable][:]})
+    if (data_dimension == all_data.variables[variable].shape):
+        data_with_same_dimension.update({i:all_data.variables[variable][:]})
  
  i = 0
  stacked_data=[]

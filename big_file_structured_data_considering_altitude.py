@@ -43,7 +43,7 @@ def struct_data(file_path):
       datawrite = open(variable + ".csv","w")
       writer = csv.writer(datawrite)
       a = all_data.variables[variable]
-      a = a.getValue().mean(0)
+      a = a.getValue()[92:].mean(0)
       var_dim = len(all_data.variables[variable].dimensions)
       dim =  list(all_data.variables[variable].dimensions)
       count_lat = dim.count('lat')
